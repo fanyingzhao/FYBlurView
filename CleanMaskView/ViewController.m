@@ -20,18 +20,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.title = @"范范好牛逼啊啊啊啊啊啊";
-    
-    FYBlurView* blur = [[FYBlurView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    [self.view addSubview:blur];
-    
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 40)];
-    view.backgroundColor = [UIColor redColor];
-    [blur.contentView addSubview:view];
-    
-    UIView* view1 = [[UIView alloc] initWithFrame:CGRectMake(100, 200, 100, 40)];
-    view1.backgroundColor = [UIColor redColor];
-    [blur.contentView addSubview:view1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,4 +34,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pressBtn:(id)sender
+{
+    FYBlurView* blur = [[FYBlurView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [blur show];
+    
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 40)];
+    view.backgroundColor = [UIColor redColor];
+//    [blur addSubview:view];
+    
+    UIView* view1 = [[UIView alloc] initWithFrame:CGRectMake(100, 200, 100, 40)];
+    view1.backgroundColor = [UIColor redColor];
+//    [blur addSubview:view1];
+}
 @end

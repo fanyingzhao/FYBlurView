@@ -11,10 +11,22 @@
 @interface FYBlurView : UIView
 
 /**
- *  模糊系数,默认是0.15
+ *  模糊系数 默认是0.15
  */
 @property (nonatomic, assign) CGFloat blurAmount;
 
-@property (nonatomic, strong) UIView* contentView;
+/**
+ *  默认是 keyWindow
+ */
+@property (nonatomic, strong) UIView* attachedView;
+
+/**
+ *  点击是否隐藏 默认为YES
+ */
+@property (nonatomic, assign) BOOL touchHidden;
+
+- (void)show;
+
+- (void)hide;
 
 @end

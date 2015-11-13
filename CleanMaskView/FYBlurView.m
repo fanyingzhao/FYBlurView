@@ -12,7 +12,7 @@
 
 @interface FYBlurView ()
 
-@property (nonatomic, strong) UIWindow* showWindow;
+@property (nonatomic, strong) UIImageView* blurImageView;
 @end
 
 @implementation FYBlurView
@@ -29,30 +29,13 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        [self.showWindow addSubview:self.contentView];
+        self.touchHidden = YES;
+        
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouch:)];
+        [self addGestureRecognizer:tap];
     }
     
     return self;
-}
-
-- (void)didMoveToWindow
-{
-    [self setBackImage];
-}
-
-- (void)setBackImage
-{
-    UIView* snapView = [UIApplication sharedApplication].keyWindow;
-    NSData* imageData = UIImageJPEGRepresentation(screenshot(snapView), .0001f);
-    
-    UIImage *blurredImage = [self blurredImage:self.blurAmount image:[UIImage imageWithData:imageData]];
-    
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    imageView.image = blurredImage;
-
-    [self.contentView addSubview:imageView];
-    [self.contentView sendSubviewToBack:imageView];
-    [self.showWindow makeKeyAndVisible];
 }
 
 UIImage * screenshot(UIView *view)
@@ -133,6 +116,30 @@ UIImage * screenshot(UIView *view)
     return returnImage;
 }
 
+#pragma mark - events
+- (void)actionTouch:(UITapGestureRecognizer*)tap
+{
+    [self hide];
+}
+
+#pragma mark - show
+- (void)show
+{
+    [self.attachedView addSubview:self];
+    [self addSubview:self.blurImageView];
+    [self sendSubviewToBack:self.blurImageView];
+    self.hidden = NO;
+}
+
+- (void)hide
+{
+    if (self.touchHidden) {
+        
+        self.hidden = YES;
+    }
+}
+
+#pragma mark - Getter
 - (CGFloat)blurAmount
 {
     if (!_blurAmount) {
@@ -143,26 +150,29 @@ UIImage * screenshot(UIView *view)
     return _blurAmount;
 }
 
-- (UIWindow *)showWindow
+- (UIView *)attachedView
 {
-    if (!_showWindow) {
+    if (!_attachedView) {
         
-        _showWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _showWindow.windowLevel = UIWindowLevelAlert;
+        _attachedView = [UIApplication sharedApplication].keyWindow;
     }
     
-    return _showWindow;
+    return _attachedView;
 }
 
-- (UIView *)contentView
+- (UIImageView *)blurImageView
 {
-    if (!_contentView) {
+    if (!_blurImageView) {
         
-        _contentView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _contentView.backgroundColor = [UIColor clearColor];
+        NSData* imageData = UIImageJPEGRepresentation(screenshot(self.attachedView), .0001f);
+        
+        UIImage *blurredImage = [self blurredImage:self.blurAmount image:[UIImage imageWithData:imageData]];
+        
+        _blurImageView = [[UIImageView alloc] initWithFrame:self.attachedView.bounds];
+        _blurImageView.image = blurredImage;
     }
     
-    return _contentView;
+    return _blurImageView;
 }
 
 @end

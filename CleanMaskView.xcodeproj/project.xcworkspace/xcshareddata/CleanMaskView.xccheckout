@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>125234C3-7608-4EC8-9305-7EB262DD58D2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CleanMaskView</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A0272CFC7C02E14924FD41A643B82EE9547E5CF7</key>
+		<string>https://github.com/fanyingzhao/FYBlurView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CleanMaskView.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A0272CFC7C02E14924FD41A643B82EE9547E5CF7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fanyingzhao/FYBlurView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A0272CFC7C02E14924FD41A643B82EE9547E5CF7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A0272CFC7C02E14924FD41A643B82EE9547E5CF7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FYBlurView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
