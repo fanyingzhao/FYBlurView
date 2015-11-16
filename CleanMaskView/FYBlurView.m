@@ -136,6 +136,7 @@ UIImage * screenshot(UIView *view)
     if (self.touchHidden) {
         
         self.hidden = YES;
+        [self removeFromSuperview];
     }
 }
 
